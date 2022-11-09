@@ -31,10 +31,20 @@ app.post('/itens', function(req, res){
     // inserimos o valor recebido na lista
     itens.push(item);
 
-    res.send("item criado com sucesso!")
+    res.send("item criado com sucesso!");     
+    });
 
-    // res.send("Criar um item")
-}) ;
+    // Endpoint [GET] /itens/:id - READ BY ID
+    app.get("/itens/:id", function(req, res){
+        //pegamos o parâmetro de rota ID
+        const id = req.params.id -1;
+
+        //acessamos o item pelo índice
+        const item = itens[id];
+
+        // exibimoso item encontrado
+        res.send(item);
+});
 
 app.listen(3000, function () {
     console.log("Servidor rodando em http://localhost:3000");
