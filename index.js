@@ -42,7 +42,7 @@ app.post('/itens', function(req, res){
         //acessamos o item pelo índice
         const item = itens[id];
 
-        // exibimoso item encontrado
+        // exibimos o item encontrado
         res.send(item);
 });
 
