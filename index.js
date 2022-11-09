@@ -46,6 +46,20 @@ app.post('/itens', function(req, res){
         res.send(item);
 });
 
+// Endpoint [PUT] /itens/:id - UPDATE BY ID
+app.put("itens/:id", function(req, res) {
+    // pegamos o parâmetro de rota ID
+    const id = req.params.id -1;
+
+    // pegamos o nome eniado no body
+    const item = req.body.nome;
+
+    //atualizamos com o novo item, na posição ID da lista de itens
+    itens[id] = item
+
+    res.send("item atualizado com sucesso!!");
+});
+
 app.listen(3000, function () {
     console.log("Servidor rodando em http://localhost:3000");
 });
