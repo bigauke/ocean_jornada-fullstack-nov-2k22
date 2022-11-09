@@ -18,7 +18,7 @@ const itens = ["Café Pelé", "Café Pilão", "Café Arábico"];
 
 // Endpoint [GET] /itens READ ALL 
 app.get('/itens', function(req, res) {
-    res.send(itens);
+    res.send(itens.filter(Boolean));
 });
 
 // Endpoint [POST] /itens CREATE
@@ -58,6 +58,18 @@ app.put("itens/:id", function(req, res) {
     itens[id] = item
 
     res.send("item atualizado com sucesso!!");
+});
+
+// Endpoint [DELETE] /itens/:id - DELETE BY ID
+app.delete("/itens/:id", function(req, res) {
+    // pegamos o parametro de rota id
+    const id = req.params.id - 1;
+
+    //remove o item da lista
+    delete itens[id];
+
+    //exibimos uma mensagem de sucesso
+    res.send("item removido com sucesso!")
 });
 
 app.listen(3000, function () {
