@@ -1,4 +1,14 @@
 const express = require('express');
+//trazer o mongodb para a aplicação
+const { MongoClient, ObjectId } = require("mongodb");
+
+//estabelecer conexão com o bd
+const url = "mongodb://localhost:27017";
+const bancoDadosNome = "ocean_jornada_fullstack_novembro_22";
+
+const client =  MongoClient.connect(url);
+
+
 const app = express();
 
 // sinalizamos que estamos usando JSON no body
@@ -69,7 +79,7 @@ app.delete("/itens/:id", function(req, res) {
     delete itens[id];
 
     //exibimos uma mensagem de sucesso
-    res.send("item removido com sucesso!")
+    res.send("item removido com sucesso!");
 });
 
 app.listen(3000, function () {
